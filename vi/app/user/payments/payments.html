@@ -1,0 +1,45 @@
+<ng-include src="'user/dashboard/poolstats.html'"></ng-include>
+<div layout-sm="column" layout="row" flex>
+	<div layout="column" flex>
+		<md-card>
+			<md-toolbar class="md-table-toolbar md-default">
+			  <div class="md-toolbar-tools">
+			    <span class="md-title">Danh sách hóa đơn thanh toán</span>
+			  </div>
+			</md-toolbar>
+			<md-card-content>
+				<md-table-pagination md-limit="options.limit" md-limit-options="[15, 30, 50]" md-page="options.page" md-total="{{poolStats.global.totalPayments}}" md-on-paginate="loadPayments" md-page-select></md-table-pagination>
+				<md-table-container>
+				  <table md-table md-row-select ng-model="selected" md-progress="promise">
+					<thead md-head>
+					  <tr md-row>
+						<th md-column><h2 class="md-subhead">Thời gian</h2></th>
+						<th md-column><h2 class="md-subhead">Hash</h2></th>
+						<th md-column><h2 class="md-subhead">Số lượng</h2></th>
+						<th md-column><h2 class="md-subhead">Thuế</h2></th>
+						<!--<th md-column><h2 class="md-subhead">Mixin</h2></th>-->
+						<th md-column><h2 class="md-subhead">Tài khoản</h2></th>
+					  </tr>
+					</thead>
+					<tbody md-body>
+					  <tr md-row ng-repeat="payment in payments.global">
+						<td md-cell>
+							<p class="md-body-2" am-time-ago="payment.ts"></p>
+							<md-tooltip>
+								{{payment.ts | date:'HH:mm:ss dd/MM/yy'}}
+							</md-tooltip>
+						</td>
+						<td md-cell><p class="md-body-2 truncate" ng-bind-html="payment.hash | hashToLink: 'tx'"></p></td>
+						<td md-cell><p class="md-body-2 nowrap">{{payment.value | toXMR}} ETN</p></td>
+						<td md-cell><p class="md-body-2 nowrap">{{payment.fee | toXMR }} ETN</p></td>
+						<!--<td md-cell><p class="md-body-2 nowrap">{{payment.mixins}}</p></td>-->
+						<td md-cell><p class="md-body-2 nowrap">{{payment.payees}}</p></td>
+					  </tr>
+					</tbody>
+				  </table>
+				</md-table-container>
+				<md-table-pagination md-limit="options.limit" md-limit-options="[15, 30, 50]" md-page="options.page" md-total="{{poolStats.global.totalPayments}}" md-on-paginate="loadPayments" md-page-select></md-table-pagination>
+			</md-card-content>
+		</md-card>
+	</div>
+</div>

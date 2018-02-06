@@ -1,0 +1,13 @@
+logs/*
+*/.log
+!.gitkeep
+node_modules/
+vendor/
+tmp
+.DS_Store
+.idea
+package-lock.json
+app/vendor/
+build/
+app/globals.js
+app/user/help/what_should_be_in_faq

@@ -1,0 +1,72 @@
+<div layout-gt-lg="row" layout="column" class="statsbar" flex>
+	<div layout="column" layout-gt-sm="row" flex>
+		<div layout="column" flex>
+			<md-card class="metric">
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-sm card-media" layout="row" layout-align="center center">
+							<md-icon class="material-icons">multiline_chart</md-icon>
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<span class="md-headline">{{poolStats.global.totalHashes | number}}</span>
+						<span class="md-subhead">Lần thăm dò</span>
+					</md-card-title-text>
+				</md-card-title>
+			</md-card>
+		</div>
+		<div layout="column" flex>
+			<md-card class="metric">
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-sm card-media" layout="row" layout-align="center center">
+							<md-icon class="material-icons">widgets</md-icon>
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<div class="md-headline">{{poolStats.global.totalBlocksFound}} - Round {{(100 * poolStats.global.roundHashes / network.difficulty).toFixed(1) | number}} %</div>
+						<div class="md-subhead">
+							Block gần nhất (<span am-time-ago="poolStats.global.lastBlockFoundTime*1000"></span>)
+							<md-tooltip md-direction="bottom">
+						    	{{poolStats.global.lastBlockFoundTime*1000 | date:'HH:mm:ss dd/MM/yy'}}
+						     </md-tooltip>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+			</md-card>
+		</div>
+	</div>
+	<div layout="column" layout-gt-sm="row" flex>
+		<div layout="column" flex>
+			<md-card class="metric">
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-sm card-media" layout="row" layout-align="center center">
+							<md-icon class="material-icons">memory</md-icon>
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<span class="md-headline"><b class="nowrap">{{poolStats.global.hashRate | toHashRate}}</b> - {{poolStats.global.miners}} tài khoản</span>
+						<span class="md-subhead">{{poolStats.global.worker | number}} máy đang hoạt động</span>
+					</md-card-title-text>
+				</md-card-title>
+			</md-card>
+		</div>
+		<div layout="column" flex>
+			<md-card class="metric">
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-sm card-media" layout="row" layout-align="center center">
+							<md-icon class="material-icons">attach_money</md-icon>
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<span class="md-headline">{{poolStats.global.totalMinersPaid}} tài khoản nhận</span>
+						<span class="md-subhead">Thanh toán <a href="#/payments">({{poolStats.global.totalPayments}} hóa đơn)</a></span>
+					</md-card-title-text>
+
+				</md-card-title>
+			</md-card>
+		</div>
+	</div>
+</div>

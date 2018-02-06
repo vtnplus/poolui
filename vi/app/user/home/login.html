@@ -1,0 +1,48 @@
+<md-dialog aria-label="Miner Login">
+  <md-content class="login">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 class="md-title">Login to Options</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon aria-label="Close dialog">clear</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout-padding>
+      <form name="loginForm">
+        <div>
+          <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Payment Address</label>
+            <md-icon>person</md-icon>
+            <input ng-model="user.username" name="username" type="text" md-autofocus>
+          </md-input-container>
+
+          <md-input-container class="md-icon-float md-block">
+            <label>Password</label>
+            <md-icon>lock</md-icon>
+            <input ng-model="user.password" name="password" type="password" placeholder="email part of miner identifier">
+          </md-input-container>
+        </div>
+      </form>
+      <div>
+      	<p><b>NOTE: you don't need to log in to track your stats. Just put your wallet address in the box at the bottom of the dashboard.</b></p>
+      	<p><b>You only need to log in if you want to increase your payout threshold (default is 0.3 ETN).</b></p>
+      	<p><b>To register, change your miner's password field to "MinerName:your@email.com" and submit a few shares. Then, use your email as password.</b></p>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-checkbox class="md-primary" ng-model="remember">
+        Remember me
+      </md-checkbox>
+      <span flex></span>
+      <p class="invalid">{{status}}</p>
+      <md-button class="md-raised md-primary" ng-click="login()">
+        Login
+      </md-button>
+    </md-dialog-actions>
+  </md-content>
+</md-dialog>

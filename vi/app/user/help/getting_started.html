@@ -1,0 +1,53 @@
+<div layout="row" flex>
+	<div layout="column" flex>
+		
+		
+		
+				
+		<md-card>
+			<md-toolbar class="md-table-toolbar md-default">
+				<div class="md-toolbar-tools">
+					<span class="md-title">Các hình thức hỗ trợ cấu hình {{GLOBALS.pool_name}}</span>
+				</div>
+			</md-toolbar>
+			<md-card-content>
+                
+                <p>Các phần mềm sử dụng đào cryptonight thông dụng <a href="https://github.com/fireice-uk/xmr-stak-cpu/releases" target="_new" style="text-decoration: underline">xmr-stak-cpu</a>/<a href="https://github.com/fireice-uk/xmr-stak-amd/releases" target="_new" style="text-decoration: underline;">amd</a>, <a href="https://github.com/wolf9466/wolf-xmr-miner/releases" target="_new" style="text-decoration: underline;">wolf's miner</a>, <a href="https://bitcointalk.org/index.php?topic=638915.0" target="_new" style="text-decoration: underline;">claymore's miner</a>, <a href="https://github.com/KlausT/ccminer-cryptonight/releases" target="_new" style="text-decoration: underline;">ccminer-cryptonight</a>.</p>
+                
+                
+                <div flex layout="row">
+					<div flex></div>
+					<md-button ng-click="viewPorts($event)">Click xem các port được hỗ trợ</md-button>
+					<div flex></div>
+				</div>
+                
+				<p class="panel-subtitle">By now you should have a wallet, mining software, pool url and port. It's time to put them together.</p>
+
+
+				<p>Here are some examples of the parameters that you need to pass on to your miner software, the format matters so be careful.</p>
+				<p>Depending on your miner you need to add the required parameters via command line or config.txt</p>
+				<p>Required fields are payment <b>address</b> and <b>MinerIdentifier</b></p>
+				<blockquote>
+					<i>Username format</i> : address.paymentID+FixedDifficulty<br/>
+					<i>Password Format</i> : MinerIdentifier:Email<br/>
+				</blockquote>
+				<md-list flex>
+					<md-subheader class="md-no-sticky">Username / Password Samples</md-subheader>
+					<md-divider></md-divider>
+					<md-list-item class="md-3-line" ng-repeat="sample in samples">
+					  <div class="md-list-item-text" layout="column">
+						<h4>## {{ sample.desc }}</h4>
+						<blockquote>
+							<p><b>{{ sample.type }}</b> : {{ sample.sample }}</p>
+							<small class="md-body-1">(e.g. miner.exe -u <i class="truncate">{{(sample.type=="Username") ? sample.sample : 'paymentAddress'}}</i> -p {{(sample.type=="Password") ? sample.sample : 'worker'}})</small><br/>
+						</blockquote>
+					  </div>
+					  <md-divider></md-divider>
+					</md-list-item>
+				 </md-list>
+			<h3 class="text-center">Happy Mining !</h3>
+			</md-card-content>
+		</md-card>
+
+	</div>
+</div>
